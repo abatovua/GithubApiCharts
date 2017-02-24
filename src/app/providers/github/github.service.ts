@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http } from '@angular/http';
-import { config } from '../../config/index';
+// import { config } from '../../config/index';
 
 import { Observable, Subscription } from 'rxjs/Rx'
 import 'rxjs/add/operator/map';
@@ -24,7 +24,7 @@ export class GithubService {
     private color: ColorService,
     private store: Store<AppState>
   ) {
-    this.auth = config.auth;
+    // this.auth = config.auth;
     this.storeSubscription = this.store.select('repos')
       .subscribe((repos: ReposState) => {
         this.colorMap = repos.colorMap;
@@ -35,7 +35,7 @@ export class GithubService {
     let url = `${this.apiUrl}/search/repositories?q=${query}`;
     let headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': this.auth
+      // 'Authorization': this.auth
     });
     let options = new RequestOptions({ headers });
 
@@ -51,7 +51,7 @@ export class GithubService {
   public loadMoreRepos(url: string): Observable<any> {
     let headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': this.auth
+      // 'Authorization': this.auth
     });
     let options = new RequestOptions({ headers });
 

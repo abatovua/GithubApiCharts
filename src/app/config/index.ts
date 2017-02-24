@@ -1,3 +1,4 @@
-export const config = {
-  auth: 'Basic ecd2b21c6922510061153c808932df1782add8a1'
-};
+//  your personal token here
+// export const config = {
+//   auth: 'Basic ecd2b21c6922510061153c808932df1782add8a1'
+// };
