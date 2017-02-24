@@ -18,6 +18,6 @@ const reducers = {
 
 const rootReducer: ActionReducer<AppState> = combineReducers(reducers);
 
-export const root = (state: any, action: Action) => {
+export function root(state: any, action: Action) {
   return rootReducer(state, action);
 }
