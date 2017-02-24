@@ -1,0 +1,81 @@
+<div MdDialogTitle>
+  <md-select placeholder="Compare by" [(ngModel)]="currentCompareBy">
+    <md-option *ngFor="let value of possibleCompareBy" [value]="value">
+      {{ value | capitalise }}
+    </md-option>
+  </md-select>
+  <md-select placeholder="Chart type" [(ngModel)]="currentChartType">
+    <md-option *ngFor="let value of possibleChartTypes" [value]="value">
+      {{ value | capitalise }}
+    </md-option>
+  </md-select>
+</div>
+<div MdDialogContent [ngSwitch]="currentChartType">
+
+  <ngx-charts-bar-vertical
+    *ngSwitchCase="'bar-vertical'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="currentCompareBy | capitalise"
+  >
+  </ngx-charts-bar-vertical>
+
+  <ngx-charts-bar-horizontal
+    *ngSwitchCase="'bar-horizontal'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="currentCompareBy | capitalise"
+  >
+  </ngx-charts-bar-horizontal>
+
+  <ngx-charts-pie-chart
+    *ngSwitchCase="'pie'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]"
+    [legend]="showLegend"
+    [explodeSlices]="explodeSlices"
+    [labels]="showLabels"
+    [doughnut]="false"
+    [gradient]="gradient">
+  </ngx-charts-pie-chart>
+
+  <ngx-charts-advanced-pie-chart
+    *ngSwitchCase="'pie-advanced'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]"
+    [gradient]="gradient">
+  </ngx-charts-advanced-pie-chart>
+
+  <ngx-charts-pie-grid
+    *ngSwitchCase="'pie-grid'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]">
+  </ngx-charts-pie-grid>
+
+  <ngx-charts-tree-map
+    *ngSwitchCase="'tree-map'"
+    [view]="viewBox"
+    [scheme]="colorScheme"
+    [results]="data[currentCompareBy]">
+  </ngx-charts-tree-map>
+
+</div>

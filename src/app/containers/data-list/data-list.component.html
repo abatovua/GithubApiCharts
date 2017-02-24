@@ -1,0 +1,61 @@
+<md-card>
+  <md-card-title>Repositories</md-card-title>
+  <md-card-content *ngIf='!repos.length'>
+    <p *ngIf='!isFetching'>Nothing here yet. Try to search for repos.</p>
+    <md-progress-spinner
+      [ngStyle]='{margin: "0 auto"}'
+      *ngIf='isFetching'
+      mode='indeterminate'
+      color='accent'
+    ></md-progress-spinner>
+  </md-card-content>
+
+  <md-card-content *ngIf='repos.length'>
+    <md-list>
+      <md-list-item
+        *ngFor='let repo of repos'
+        dnd-draggable
+        (onDragStart)='handleDragState($event)'
+        (onDragEnd)='handleDragState($event)'
+        [dragEnabled]='isInComparison(repo.id)'
+        [dragData]='repo'
+        [ngStyle]='isInComparison(repo.id) ? {} : { backgroundColor: "rgba(207,216,220 ,1)"}'
+      >
+        <a
+          class='avatar-link'
+          [href]='repo.svn_url'
+          target='_blank'
+          md-list-avatar
+          [mdTooltip]='repo.owner.login'
+          mdTooltipPosition='right'
+        >
+          <img [src]='repo.owner.avatar_url'>
+        </a>
+        <h3 md-line>{{repo.name}}</h3>
+        <p
+          md-line
+          class='repo-language'
+          [ngStyle]='getLanguageStyle(repo.language)'
+        >
+          {{repo.language || 'N/A'}}
+        </p>
+      </md-list-item>
+      <div class='load-more-wrapper'>
+        <button
+          *ngIf='nextPage && !isFetching'
+          md-raised-button
+          (click)='loadMore()'
+          color='primary'
+        >
+          Load More
+        </button>
+        <md-progress-spinner
+          *ngIf='isFetching'
+          mode='indeterminate'
+          color='accent'
+        ></md-progress-spinner>
+      </div>
+    </md-list>
+  </md-card-content>
+
+</md-card>

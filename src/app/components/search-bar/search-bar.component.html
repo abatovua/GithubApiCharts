@@ -1,0 +1,12 @@
+<form (submit)="handleSearch($event)">
+  <md-input-container>
+    <input
+      mdInput
+      [(ngModel)]="query"
+      name="query"
+      type="search"
+      placeholder="Search..."
+    >
+  </md-input-container>
+  <button md-raised-button [disabled]="!query" color="primary">Search</button>
+</form>

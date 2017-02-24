@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<app-header title="Angular2 Github API"></app-header>
+<main class="main-container">
+  <div fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex="100" fxFlexAlign="center">
+      <search-bar></search-bar>
+    </div>
+    <div fxFlex="50">
+      <data-list></data-list>
+    </div>
+    <div fxFlex="50">
+      <chart-generator></chart-generator>
+    </div>
+  </div>
+</main>
+

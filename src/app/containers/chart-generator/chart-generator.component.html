@@ -1,0 +1,38 @@
+<md-card
+  dnd-droppable
+  [dropEnabled]='repos.length < maxItems'
+  (onDropSuccess)="addToComparison($event)"
+  [ngStyle]='getContainerStyle()'
+>
+  <md-card-title>
+    Chart generator
+    <span *ngIf='available()'>
+      ({{available()}} items left)
+    </span>
+  </md-card-title>
+  <md-card-content *ngIf='!repos.length'>
+    <p>Drop repos here to build comparison chart.</p>
+  </md-card-content>
+  <md-card-content *ngIf='repos.length'>
+    <md-list>
+      <md-list-item *ngFor='let repo of repos' [ngStyle]='getLanguageStyle(repo.language)'>
+        <h3 md-line>{{repo.name}}</h3>
+        <md-icon
+          mdTooltip='Remove'
+          mdTooltipPosition='left'
+          (click)='removeFromComparison(repo.id)'
+        >
+          close
+        </md-icon>
+      </md-list-item>
+    </md-list>
+    <button
+      *ngIf='repos.length > 1'
+      md-raised-button
+      color='primary'
+      (click)='openModal()'
+    >
+      Compare
+    </button>
+  </md-card-content>
+</md-card>

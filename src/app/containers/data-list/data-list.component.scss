@@ -1,0 +1,35 @@
+p[md-line].repo-language {
+  align-self: flex-start;
+  padding: 4px;
+  border-radius: 15px;
+  min-width: 83px;
+  text-align: center;
+}
+
+a.avatar-link {
+  overflow: hidden;
+  background-color: rgba(158,158,158,0.8);
+
+  img {
+    width: 100%;
+  }
+}
+
+md-list-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+md-list-item:hover {
+  background-color: rgba(158,158,158,0.8);
+}
+
+.load-more-wrapper {
+  text-align: center;
+
+  md-progress-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+}
