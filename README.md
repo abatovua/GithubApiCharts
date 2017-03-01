@@ -15,3 +15,5 @@ Frameworks and libs:
   3. ngx-charts
   4. ng2-dnd
   5. angular2@material
+  
+[Live Demo](https://angular2-github.herokuapp.com/)
